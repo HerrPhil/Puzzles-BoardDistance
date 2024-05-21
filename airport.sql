@@ -1,0 +1,41 @@
+
+-- create
+CREATE TABLE FLIGHTS (
+  start_port char(3) NOT NULL,
+  end_port char(3) NOT NULL
+);
+
+CREATE TABLE AIRPORTS (
+  city_name varchar(17) NOT NULL,
+  port_code char(3) NOT NULL
+);
+
+-- insert
+INSERT INTO FLIGHTS VALUES ('JFK', 'NRT');
+INSERT INTO FLIGHTS VALUES ('LGA', 'LAX');
+INSERT INTO FLIGHTS VALUES ('LAX', 'HND');
+INSERT INTO FLIGHTS VALUES ('LAX', 'HND');
+INSERT INTO FLIGHTS VALUES ('JFK', 'CDG');
+INSERT INTO FLIGHTS VALUES ('CDG', 'MUC');
+INSERT INTO FLIGHTS VALUES ('JFK', 'HND');
+INSERT INTO FLIGHTS VALUES ('JFK', 'MUC');
+INSERT INTO FLIGHTS VALUES ('MUC', 'NRT');
+
+INSERT INTO AIRPORTS VALUES ('New York', 'JFK');
+INSERT INTO AIRPORTS VALUES ('New York', 'LGA');
+INSERT INTO AIRPORTS VALUES ('Paris', 'CDG');
+INSERT INTO AIRPORTS VALUES ('Tokyo', 'HND');
+INSERT INTO AIRPORTS VALUES ('Los Angeles', 'LAX');
+INSERT INTO AIRPORTS VALUES ('Tokyo', 'NRT');
+INSERT INTO AIRPORTS VALUES ('Munich', 'MUC');
+
+-- fetch 
+SELECT DISTINCT m.city_name "cities"
+FROM FLIGHTS f1
+JOIN FLIGHTS f2 ON f1.end_port = f2.start_port
+JOIN AIRPORTS a1 ON f1.start_port = a1.port_code
+JOIN AIRPORTS a2 ON f2.end_port = a2.port_code
+JOIN AIRPORTS m ON f1.end_port = m.port_code
+WHERE a1.city_name = 'New York'
+AND a2.city_name = 'Tokyo'
+ORDER BY m.city_name;
