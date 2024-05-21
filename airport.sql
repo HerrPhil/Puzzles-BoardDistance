@@ -30,7 +30,7 @@ INSERT INTO AIRPORTS VALUES ('Tokyo', 'NRT');
 INSERT INTO AIRPORTS VALUES ('Munich', 'MUC');
 
 -- fetch 
-SELECT DISTINCT m.city_name
+SELECT DISTINCT m.city_name "cities"
 FROM FLIGHTS f1
 JOIN FLIGHTS f2 ON f1.end_port = f2.start_port
 JOIN AIRPORTS a1 ON f1.start_port = a1.port_code
@@ -39,4 +39,3 @@ JOIN AIRPORTS m ON f1.end_port = m.port_code
 WHERE a1.city_name = 'New York'
 AND a2.city_name = 'Tokyo'
 ORDER BY m.city_name;
-
