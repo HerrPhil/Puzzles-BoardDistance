@@ -1,0 +1,61 @@
+You are given two tables, flights and airports, with the following structure:
+
+flights
+start_port char(3) NOT NULL
+end_port char(3) NOT NULL
+
+airports
+city_name varhar(17) NOT NULL
+port_code char(3) NOT NULL
+
+Each row in the table flights contains information about a flight:
+code of departure (start_port)
+and code of destination (end_port)
+
+Each row in the table airports contains information about an airport:
+the city name (city_name)
+and the port code (port_code).
+
+Each port_code is assigned to at most one airport.
+
+Write an SQL query that finds all cities through which a flight
+from New York
+to Tokyo
+may pass if the passenger wants to make exactly one change of flights.
+
+Example:
+
+for given tables flights:
+
+
+start_port end_port
+JFK NRT
+LGA LAX
+LAX HND
+LAX HND
+JFK CDG
+CDG MUC
+JFK HND
+JFK MUC
+MUC NRT
+
+and airports:
+
+city_name port_code
+New York    JFK
+New York    LGA
+Paris       CDG
+Tokyo       HND
+Los Angeles LAX
+Tokyo       NRT
+Munich      MUC
+
+your request should return:
+
+cities
+Los Angeles
+Munich
+
+
+
+Test the query in https://onecompiler.com/postgresql/42dtrgq8e
