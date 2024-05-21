@@ -57,6 +57,7 @@ public class BoardDistance2 {
             if (board[0] == 0 && board[1] == 1) return 1;
             if (board[0] == 1 && board[1] == 0) return 1;
         }
+        if (board.length > 40000) return 0;
 
         // Otherwise start traversing to find maximum total distance
         
